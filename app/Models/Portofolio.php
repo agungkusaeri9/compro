@@ -15,4 +15,14 @@ class Portofolio extends Model
     {
         return $this->hasMany(PortofolioGambar::class);
     }
+
+    public function gambar_utama()
+    {
+        $gambar = $this->gambar()->first();
+        if ($gambar) {
+            return asset('storage/' . $gambar->gambar);
+        } else {
+            return asset('assets/images/samples/1280x768/10.jpg');
+        }
+    }
 }

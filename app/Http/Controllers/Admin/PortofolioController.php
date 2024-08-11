@@ -67,8 +67,8 @@ class PortofolioController extends Controller
     {
         request()->validate([
             'nama' => ['required'],
-            'tanggal_mulai' => ['required', 'date'],
-            'tanggal_akhir' => ['required', 'date'],
+            'deskripsi' => ['required'],
+            'nilai_proyek' => ['required']
         ]);
         DB::beginTransaction();
         try {

@@ -4,12 +4,13 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title mb-5">Edit Proyek</h4>
-                    <form action="{{ route('admin.proyek.update', $item->id) }}" method="post" enctype="multipart/form-data">
+                    <h4 class="card-title mb-5">Edit Portofolio</h4>
+                    <form action="{{ route('admin.portofolio.update', $item->id) }}" method="post"
+                        enctype="multipart/form-data">
                         @csrf
                         @method('patch')
                         <div class='form-group mb-3'>
-                            <label for='nama' class='mb-2'>Nama Proyek <span class='text-danger'>*</span></label>
+                            <label for='nama' class='mb-2'>Nama Portofolio <span class='text-danger'>*</span></label>
                             <input type='text' name='nama' class='form-control @error('nama') is-invalid @enderror'
                                 value='{{ $item->nama ?? old('nama') }}'>
                             @error('nama')
@@ -19,32 +20,29 @@
                             @enderror
                         </div>
                         <div class='form-group mb-3'>
-                            <label for='tanggal_mulai' class='mb-2'>Tanggal Mulai <span
-                                    class='text-danger'>*</span></label>
-                            <input type='date' name='tanggal_mulai' id='tanggal_mulai'
-                                class='form-control @error('tanggal_mulai') is-invalid @enderror'
-                                value='{{ $item->tanggal_mulai->translatedFormat('Y-m-d') ?? old('tanggal_mulai') }}'>
-                            @error('tanggal_mulai')
+                            <label for='deskripsi' class='mb-2'>Deskripsi <span class='text-danger'>*</span></label>
+                            <textarea name='deskripsi' id='deskripsi' cols='30' rows='3'
+                                class='form-control @error('deskripsi') is-invalid @enderror'>{{ $item->deskripsi ?? old('deskripsi') }}</textarea>
+                            @error('deskripsi')
                                 <div class='invalid-feedback'>
                                     {{ $message }}
                                 </div>
                             @enderror
                         </div>
                         <div class='form-group mb-3'>
-                            <label for='tanggal_akhir' class='mb-2'>Tanggal Akhir <span
-                                    class='text-danger'>*</span></label>
-                            <input type='date' name='tanggal_akhir' id='tanggal_akhir'
-                                class='form-control @error('tanggal_akhir') is-invalid @enderror'
-                                value='{{ $item->tanggal_akhir->translatedFormat('Y-m-d') ?? old('tanggal_akhir') }}'>
-                            @error('tanggal_akhir')
+                            <label for='nilai_proyek' class='mb-2'>Nilai Proyek <span class='text-danger'>*</span></label>
+                            <input type='number' name='nilai_proyek' id='nilai_proyek'
+                                class='form-control @error('nilai_proyek') is-invalid @enderror'
+                                value='{{ $item->nilai_proyek ?? old('nilai_proyek') }}'>
+                            @error('nilai_proyek')
                                 <div class='invalid-feedback'>
                                     {{ $message }}
                                 </div>
                             @enderror
                         </div>
                         <div class="form-group text-right">
-                            <a href="{{ route('admin.proyek.index') }}" class="btn btn-warning">Batal</a>
-                            <button class="btn btn-primary">Update Proyek</button>
+                            <a href="{{ route('admin.portofolio.index') }}" class="btn btn-warning">Batal</a>
+                            <button class="btn btn-primary">Update Portofolio</button>
                         </div>
                     </form>
                 </div>

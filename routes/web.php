@@ -12,9 +12,14 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\KontakController;
 use App\Http\Controllers\Admin\PortofolioGambarController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\LaporanKeuanganController;
+use App\Http\Controllers\PortofolioController as ControllersPortofolioController;
+use App\Http\Controllers\ProfilePerusaahaanController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\TentangController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,7 +37,12 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 // Route::get('/', function)
-
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/kontak', [\App\Http\Controllers\KontakController::class, 'index'])->name('kontak');
+Route::get('/tentang', [TentangController::class, 'index'])->name('tentang');
+Route::get('/portofolio', [ControllersPortofolioController::class, 'index'])->name('portofolio.index');
+Route::get('/portofolio/{id}', [ControllersPortofolioController::class, 'show'])->name('portofolio.show');
+Route::get('/profile-perusahaan', [ProfilePerusaahaanController::class, 'index'])->name('profile-perusaahaan');
 // admin
 Route::middleware('auth')->name('admin.')->prefix('admin')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
@@ -59,4 +69,7 @@ Route::middleware('auth')->name('admin.')->prefix('admin')->group(function () {
     Route::get('portofolio-gambar/create', [PortofolioGambarController::class, 'create'])->name('portofolio-gambar.create');
     Route::post('portofolio-gambar/create', [PortofolioGambarController::class, 'store'])->name('portofolio-gambar.store');
     Route::delete('portofolio-gambar/delete', [PortofolioGambarController::class, 'destroy'])->name('portofolio-gambar.destroy');
+
+    Route::get('laporan/keuangan', [LaporanKeuanganController::class, 'index'])->name('laporan-keuangan.index');
+    Route::post('laporan/keuangan', [LaporanKeuanganController::class, 'print'])->name('laporan-keuangan.print');
 });

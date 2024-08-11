@@ -48,15 +48,30 @@
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{ route('admin.pemasukan.index') }}">
-                <i class="typcn typcn-group menu-icon"></i>
+                <i class="typcn typcn-arrow-up-thick menu-icon"></i>
                 <span class="menu-title">Pemasukan </span>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{ route('admin.pengeluaran.index') }}">
-                <i class="typcn typcn-group menu-icon"></i>
+                <i class="typcn typcn-arrow-down-thick menu-icon"></i>
                 <span class="menu-title">Pengeluaran </span>
             </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#laporankeuangan" aria-expanded="false"
+                aria-controls="laporankeuangan">
+                <i class="typcn typcn-database menu-icon"></i>
+                <span class="menu-title">Laporan</span>
+                <i class="typcn typcn-chevron-right menu-arrow"></i>
+            </a>
+            <div class="collapse" id="laporankeuangan">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.laporan-keuangan.index') }}">Keuangan</a>
+                    </li>
+                </ul>
+            </div>
         </li>
         <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
@@ -81,4 +96,5 @@
                 </ul>
             </div>
         </li>
+    </ul>
 </nav>
